@@ -7,7 +7,7 @@ import classes from './SideDrawer.module.css';
 import Auxiliary from '../../../hoc/Auxiliary';
 
 const sideDrawer = props => {
-	const attachedClasses = [classes.SideDrawer, classes.Close];
+	let attachedClasses = [classes.SideDrawer, classes.Close];
 	if (props.open) {
 		attachedClasses = [classes.SideDrawer, classes.Open];
 	}
