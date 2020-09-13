@@ -4,7 +4,6 @@ import Auxiliary from '../../hoc/Auxiliary';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import classes from './Layout.module.css';
-import { render } from '@testing-library/react';
 
 class Layout extends Component {
 	state = {
@@ -15,13 +14,19 @@ class Layout extends Component {
 		this.setState({ showSideDrawer: false });
 	};
 
+	sideDrawerToggleHandler = () => {
+		this.setState(prevState => {
+			return { showSideDrawer: !prevState.showSideDrawer };
+		});
+	};
+
 	render() {
 		return (
 			<Auxiliary>
-				<Toolbar />
+				<Toolbar clicked={this.sideDrawerOpenedHandler} />
 				<SideDrawer
 					open={this.state.showSideDrawer}
-					closed={this.sideDrawerClosedHandler}
+					closed={this.sideDrawerToggleHandler}
 				/>
 				<main className={classes.Content}>{this.props.children}</main>
 			</Auxiliary>
